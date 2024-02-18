@@ -1,0 +1,6 @@
+.idea/
+cmake-build-debug/
+cmake-build-debug-visual-studio/
+cmake-build-debug-visual-studio-2019/
+cmake-build-debug-visual-studio-2022/
+images/
