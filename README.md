@@ -17,4 +17,4 @@ Create an images directory, and include the following images, to build properly:
 	hamburger.png (white hamburger button)
 	icon.png (book icon)
 
-_
+---
