@@ -13,11 +13,6 @@
 #include <QPushButton>
 #include <QStandardPaths>
 
-
-/*
- * TODO: First thing, move images with QT to ~/.local/share/Journal/images
- */
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /// Create Folders
@@ -75,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // Create layout for main window
     QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
 
+
     // Create top bar layout
     QHBoxLayout* topBarLayout = new QHBoxLayout();
 
@@ -98,6 +94,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // Sidebar with journal entries
     journalEntries = new QListWidget();
     journalEntries->setFixedWidth(200);
+    journalEntries->setStyleSheet("QListWidget { border: none; }");
     journalLayout->addWidget(journalEntries);
 
     // Journal page area
@@ -106,6 +103,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
     titleLabel->setStyleSheet("font-size: 16px; font-weight: bold;");
     contentTextEdit = new QTextEdit();
+    contentTextEdit->setStyleSheet("QTextEdit { border: none; }");
     journalPageLayout->addWidget(titleLabel);
     journalPageLayout->addWidget(contentTextEdit);
     journalLayout->addWidget(journalPageWidget);
@@ -115,9 +113,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Create and add menu bar
     QMenuBar *menuBar = this->menuBar();
+
+    menuBar->setStyleSheet("QMenuBar { background-color: rgb(30, 30, 30); color: white; } "
+                           "QMenuBar::item:selected { background-color: rgb(0, 120, 212); } "
+                           "QMenu { background-color: rgb(53, 53, 53); color: white; border: none; } "
+                           "QMenu::item:selected { background-color: rgb(42, 130, 218); color: black; }");
+
+
     QMenu *fileMenu = menuBar->addMenu("&File");
 
-    // Create the File Menu actions
     QAction *newEntryAction = fileMenu->addAction("&New Entry");
     QAction* saveAction = fileMenu->addAction("&Save Entry");
     QAction* exitAction = fileMenu->addAction("&Exit");
