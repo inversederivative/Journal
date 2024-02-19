@@ -190,8 +190,6 @@ void MainWindow::loadEntryContent(QListWidgetItem* listItem) {
     currentEntry.setTitle(listItem->text());
     QString filePath = entriesFolderPath + "/" + currentEntry.getTitle().trimmed() + ".txt";
 
-    qDebug() << filePath;
-
     // Open the file and load its content into the text editor
     QFile file(filePath);
 

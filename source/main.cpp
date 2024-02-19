@@ -4,10 +4,7 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-
-    qDebug() << QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-
-
+    
     app.setStyle(QStyleFactory::create("Fusion"));
 
     // Create the main window
