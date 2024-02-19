@@ -56,6 +56,9 @@ private:
     QTextEdit* contentTextEdit;
     JournalEntry currentEntry;
     QLabel* titleLabel;
+    QString journalFolderPath;
+    QString imagesFolderPath;
+    QString entriesFolderPath;
 };
 
 

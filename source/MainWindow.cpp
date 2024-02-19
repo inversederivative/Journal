@@ -11,558 +11,40 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QPushButton>
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget and layout for main window
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create a splitter to manage the resizable layout
-//    QSplitter *splitter = new QSplitter(Qt::Horizontal, centralWidget);
-//
-//    // Create layout for main window
-//    //QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
-//    QHBoxLayout* journalLayout = new QHBoxLayout();
-//
-//    // Sidebar with journal entries
-//    journalEntries = new QListWidget(splitter);
-//    journalEntries->setFixedWidth(200);
-//    journalLayout->addWidget(journalEntries);
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget(splitter);
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//
-//    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
-//    mainLayout->addWidget(splitter);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    QObject::connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    QObject::connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    QObject::connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    QObject::connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    populateEntriesFromFolder();
-//}
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create a QHBoxLayout to hold the main layout
-//    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
-//
-//    // Sidebar with journal entries
-//    QWidget* sidebar = new QWidget(this);
-//    QVBoxLayout* sidebarVLayout = new QVBoxLayout(sidebar);
-//    QPushButton *collapseButton = new QPushButton( this);
-//    collapseButton->setFixedWidth(5); // Set a fixed width for the button
-//    sidebarVLayout->addWidget(collapseButton);
-//
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    sidebarVLayout->addWidget(journalEntries);
-//    //sidebarVLayout->addStretch(); // Add stretch to push the button to the bottom
-//
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget(this);
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//
-//    // Add sidebar and journalPageWidget to the main layout
-//    mainLayout->addWidget(sidebar);
-//    mainLayout->addWidget(journalPageWidget);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    QObject::connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    QObject::connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    QObject::connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    QObject::connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    QObject::connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    // Populate entries from folder
-//    populateEntriesFromFolder();
-//}
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create a QHBoxLayout to hold the main layout
-//    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
-//
-//    // Sidebar with journal entries
-//    QWidget* sidebar = new QWidget(this);
-//    QVBoxLayout* sidebarLayout = new QVBoxLayout(sidebar);
-//
-//    // Create a QPushButton with a hamburger icon
-//    QPushButton *collapseButton = new QPushButton(this);
-//    QIcon buttonIcon("./images/hamburger.png");
-//    collapseButton->setIcon(buttonIcon);
-//    collapseButton->setFixedSize(30, 30); // Set the size of the button
-//    collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
-//    sidebarLayout->addWidget(collapseButton);
-//
-//    // Initialize Journal Entries and set width
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    sidebarLayout->addWidget(journalEntries);
-//    sidebarLayout->setContentsMargins(0, 0, 0, 0); // Set margins to 0
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget(this);
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//
-//    // Create a QHBoxLayout for the main content
-//    QHBoxLayout *contentLayout = new QHBoxLayout();
-//    contentLayout->addWidget(sidebar);
-//    contentLayout->addWidget(journalPageWidget);
-//    mainLayout->addLayout(contentLayout);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    QObject::connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    QObject::connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    QObject::connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    QObject::connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    QObject::connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    // Populate entries from folder
-//    populateEntriesFromFolder();
-//}
-
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget and layout for main window
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create layout for main window
-//    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-//
-//    // Create layout for journal area
-//    QVBoxLayout* journalLayout = new QVBoxLayout();
-//
-//    // Create the hamburger button
-//    QPushButton *collapseButton = new QPushButton(this);
-//    QIcon buttonIcon("./images/hamburger.png");
-//    collapseButton->setIcon(buttonIcon);
-//    collapseButton->setFixedSize(30, 30); // Set the size of the button
-//    collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
-//    journalLayout->addWidget(collapseButton, 0, Qt::AlignTop); // Add button to the top
-//
-//    // Sidebar with journal entries
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    journalLayout->addWidget(journalEntries);
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget();
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//    journalLayout->addWidget(journalPageWidget);
-//
-//    // Add journal layout to main layout
-//    mainLayout->addLayout(journalLayout);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    populateEntriesFromFolder();
-//}
-
-///////////////// NEARLY PERFECT!!!!
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget and layout for main window
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create layout for main window
-//    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-//
-//    // Create layout for journal area
-//    QHBoxLayout* journalLayout = new QHBoxLayout();
-//
-//    // Create the hamburger button
-//    QPushButton *collapseButton = new QPushButton(this);
-//    QIcon buttonIcon("./images/hamburger.png");
-//    collapseButton->setIcon(buttonIcon);
-//    collapseButton->setFixedSize(30, 30); // Set the size of the button
-//    collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
-//    journalLayout->addWidget(collapseButton); // Add button to the left
-//
-//    // Sidebar with journal entries
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    journalLayout->addWidget(journalEntries);
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget();
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//
-//    // Add journal page widget to journal layout
-//    journalLayout->addWidget(journalPageWidget);
-//
-//    // Add journal layout to main layout
-//    mainLayout->addLayout(journalLayout);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    populateEntriesFromFolder();
-//}
-
-
-
-void MainWindow::toggleSidebar() {
-    if (journalEntries->isVisible()) {
-        journalEntries->hide();
-    } else {
-        journalEntries->show();
-    }
-}
-
-/////////////////// EVEN MORE PERFECT, BUT NEEDS WORK!!!
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget and layout for main window
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create layout for main window
-//    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-//
-//    // Create layout for journal area
-//    QHBoxLayout* journalLayout = new QHBoxLayout();
-//
-//    // Create the hamburger button
-//    QPushButton *collapseButton = new QPushButton(this);
-//    QIcon buttonIcon("./images/hamburger.png");
-//    collapseButton->setIcon(buttonIcon);
-//    collapseButton->setFixedSize(30, 30); // Set the size of the button
-//    collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
-//
-//    // Add the hamburger button to the top of its widget
-//    QVBoxLayout* buttonLayout = new QVBoxLayout();
-//    buttonLayout->addWidget(collapseButton, 0, Qt::AlignTop); // Align button to the top
-//    journalLayout->addLayout(buttonLayout); // Add button layout to journal layout
-//
-//    // Sidebar with journal entries
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    journalLayout->addWidget(journalEntries);
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget();
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//
-//    // Add journal page widget to journal layout
-//    journalLayout->addWidget(journalPageWidget);
-//
-//    // Add journal layout to main layout
-//    mainLayout->addLayout(journalLayout);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    populateEntriesFromFolder();
-//}
-
-//////////////// Backwards progress. Journal page is now below journal entries, but hamburger is right!
-
-//MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-//    // Create main window
-//    setWindowTitle("Simple Journal App");
-//    resize(800, 600);
-//
-//    QIcon appIcon("./images/icon.png");
-//    setWindowIcon(appIcon);
-//
-//    // Create central widget and layout for main window
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//
-//    // Create layout for main window
-//    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-//
-//    // Create top bar layout
-//    QHBoxLayout* topBarLayout = new QHBoxLayout();
-//
-//    // Create the hamburger button
-//    QPushButton *collapseButton = new QPushButton(this);
-//    QIcon buttonIcon("./images/hamburger.png");
-//    collapseButton->setIcon(buttonIcon);
-//    collapseButton->setFixedSize(30, 30); // Set the size of the button
-//    collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
-//    topBarLayout->addWidget(collapseButton);
-//
-//    // Add horizontal spacer to push the button to the right
-//    topBarLayout->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
-//
-//    // Add top bar layout to main layout
-//    mainLayout->addLayout(topBarLayout);
-//
-//    // Sidebar with journal entries
-//    journalEntries = new QListWidget();
-//    journalEntries->setFixedWidth(200);
-//    mainLayout->addWidget(journalEntries);
-//
-//    // Journal page area
-//    QWidget* journalPageWidget = new QWidget();
-//    QVBoxLayout* journalPageLayout = new QVBoxLayout(journalPageWidget);
-//    titleLabel = new QLabel("Journal Entry Title"); // Initialize titleLabel
-//    contentTextEdit = new QTextEdit();
-//    journalPageLayout->addWidget(titleLabel);
-//    journalPageLayout->addWidget(contentTextEdit);
-//    mainLayout->addWidget(journalPageWidget);
-//
-//    // Create and add menu bar
-//    QMenuBar *menuBar = this->menuBar();
-//    QMenu *fileMenu = menuBar->addMenu("&File");
-//
-//    // Create the File Menu actions
-//    QAction *newEntryAction = fileMenu->addAction("&New Entry");
-//    QAction* saveAction = fileMenu->addAction("&Save Entry");
-//    QAction* exitAction = fileMenu->addAction("&Exit");
-//
-//    // Connect them to their handler functions
-//    connect(newEntryAction, &QAction::triggered, this, &MainWindow::createNewEntry);
-//    connect(saveAction, &QAction::triggered, this, &MainWindow::saveEntry);
-//    connect(exitAction, &QAction::triggered, this, &QCoreApplication::quit);
-//
-//    // Connect the collapseButton to its handler function
-//    connect(collapseButton, &QPushButton::clicked, this, &MainWindow::toggleSidebar);
-//
-//    // Change the behavior of the journal entries, when clicked on
-//    connect(journalEntries, &QListWidget::itemClicked, this, &MainWindow::loadEntryContent);
-//
-//    QMenu *editMenu = menuBar->addMenu("&Edit");
-//    // Add edit actions as needed...
-//
-//    // Cut, Copy, Duplicate, Paste
-//    editMenu->addAction("&Cut");
-//    editMenu->addAction("&Copy");
-//    editMenu->addAction("&Duplicate");
-//    editMenu->addAction("&Paste");
-//
-//    populateEntriesFromFolder();
-//}
+#include <QStandardPaths>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+
+    /// Create Folders
+
+    journalFolderPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    QDir journalDir(journalFolderPath);
+    if (!journalDir.exists()) {
+        // Create the Journal folder
+        journalDir.mkpath(".");
+    }
+
+    // Check if the images folder exists
+    imagesFolderPath = journalFolderPath + "/images";
+    QDir imagesDir(imagesFolderPath);
+    if (!imagesDir.exists()) {
+        // Create the images folder
+        imagesDir.mkpath(".");
+    }
+
+    // Check if the entries folder exists
+    entriesFolderPath = journalFolderPath + "/entries";
+    QDir entriesDir(entriesFolderPath);
+    if (!entriesDir.exists()) {
+        // Create the entries folder
+        entriesDir.mkpath(".");
+    }
+
     // Create main window
-    setWindowTitle("Simple Journal App");
+    setWindowTitle("Journal");
     resize(800, 600);
 
-    QIcon appIcon("./images/icon.png");
+    QIcon appIcon(imagesFolderPath + "/icon.png");
     setWindowIcon(appIcon);
 
     // Create central widget and layout for main window
@@ -577,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Create the hamburger button
     QPushButton *collapseButton = new QPushButton(this);
-    QIcon buttonIcon("./images/hamburger.png");
+    QIcon buttonIcon(imagesFolderPath + "/hamburger.png");
     collapseButton->setIcon(buttonIcon);
     collapseButton->setFixedSize(30, 30); // Set the size of the button
     collapseButton->setStyleSheet("QPushButton { border: none; }"); // Remove the button border
@@ -677,35 +159,12 @@ void MainWindow::createNewEntry() {
     saveEntry(); // Note, this will overwrite any existing files with same name.
 }
 
-
-//void MainWindow::saveEntry() {
-//    // Get the content from the text edit widget
-//    QString content = contentTextEdit->toPlainText();
-//
-//    // Open a file dialog to choose the file path
-//    QString filePath = QFileDialog::getSaveFileName(this, tr("Save Entry"), "", tr("Text Files (*.txt)"));
-//
-//    // If the file path is not empty, proceed with saving
-//    if (!filePath.isEmpty()) {
-//        QFile file(filePath);
-//
-//        // Try to open the file in WriteOnly and Text mode
-//        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-//            QTextStream out(&file);
-//            // Write the content to the file
-//            out << content;
-//            // Close the file
-//            file.close();
-//        }
-//    }
-//}
-
 void MainWindow::saveEntry() {
     if (!currentEntry.getTitle().isEmpty()) {
         currentEntry.setContent(contentTextEdit->toPlainText());
 
         // Ensure that the "entries" folder exists
-        QDir entriesDir(QCoreApplication::applicationDirPath() + "/entries");
+        QDir entriesDir(entriesFolderPath);
         if (!entriesDir.exists()) {
             entriesDir.mkpath(".");
         }
@@ -729,7 +188,9 @@ void MainWindow::loadEntryContent(QListWidgetItem* listItem) {
     // This way, we don't accidentally delete, by clicking on another entry.
     saveEntry();
     currentEntry.setTitle(listItem->text());
-    QString filePath = QCoreApplication::applicationDirPath() + "/entries/" + currentEntry.getTitle().trimmed() + ".txt";
+    QString filePath = entriesFolderPath + "/" + currentEntry.getTitle().trimmed() + ".txt";
+
+    qDebug() << filePath;
 
     // Open the file and load its content into the text editor
     QFile file(filePath);
@@ -753,8 +214,6 @@ void MainWindow::loadEntryContent(QListWidgetItem* listItem) {
 
 
 void MainWindow::populateEntriesFromFolder() {
-    // Get the path to the "entries" folder
-    QString entriesFolderPath = QCoreApplication::applicationDirPath() + "/entries";
 
     // Check if the folder exists
     QDir entriesDir(entriesFolderPath);
@@ -797,3 +256,10 @@ void MainWindow::updateTitleLabel(const QString &title) {
         titleLabel->setText(title);
 }
 
+void MainWindow::toggleSidebar() {
+    if (journalEntries->isVisible()) {
+        journalEntries->hide();
+    } else {
+        journalEntries->show();
+    }
+}
