@@ -13,6 +13,11 @@
 #include <QPushButton>
 #include <QStandardPaths>
 
+
+/*
+ * TODO: First thing, move images with QT to ~/.local/share/Journal/images
+ */
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /// Create Folders
@@ -31,6 +36,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
         // Create the images folder
         imagesDir.mkpath(".");
     }
+
+    // Move the pictures:
+#ifdef Linux
+    QString sourceFile1 = "/usr/share/Journal/images/hamburger.png";
+    QString sourceFile2 = "/usr/share/Journal/images/icon.png";
+
+    QString destFile1 = imagesFolderPath + "/hamburger.png";
+    QString destFile2 = imagesFolderPath + "/icon.png";
+
+    // Perform the file move operation
+    if (QFile::copy(sourceFile1, destFile1) && QFile::copy(sourceFile2, destFile2)) {
+        qDebug() << "Files successfully moved to" << destDir;
+    } else {
+        qWarning() << "Failed to move files";
+    }
+#endif
 
     // Check if the entries folder exists
     entriesFolderPath = journalFolderPath + "/entries";

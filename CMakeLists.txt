@@ -8,6 +8,7 @@ if (CMAKE_GENERATOR STREQUAL "Visual Studio 16 2019")
 elseif(UNIX)
     message("-- Linux Qt Path Set!")
     set(CMAKE_PREFIX_PATH "/usr/lib64/cmake/Qt6")
+    add_definitions(-DLinux)
 endif()
 
 # Set the location of the Qt6 cmake files
