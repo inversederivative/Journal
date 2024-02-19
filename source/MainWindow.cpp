@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Perform the file move operation
     if (QFile::copy(sourceFile1, destFile1) && QFile::copy(sourceFile2, destFile2)) {
-        qDebug() << "Files successfully moved to" << destDir;
+        qDebug() << "Files successfully moved to" << imagesFolderPath;
     } else {
         qWarning() << "Failed to move files";
     }
