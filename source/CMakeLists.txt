@@ -2,6 +2,8 @@ set(SOURCES
 	main.cpp
 	MainWindow.cpp
 	../include/MainWindow.hpp
+	JournalEntry.cpp
+	../include/JournalEntry.hpp
 )
 
 
