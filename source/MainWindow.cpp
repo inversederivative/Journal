@@ -13,6 +13,13 @@
 #include <QPushButton>
 #include <QStandardPaths>
 
+
+/*
+ * TODO: Very first entry is still being deleted.
+ * There's a JournalEntry bug, where the map is set to "", and after we save the JSON, the map value for the
+ * very first entry is not being populated.
+ */
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /// Create Folders
